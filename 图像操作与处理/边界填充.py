@@ -3,6 +3,12 @@ import matplotlib.pyplot as plt
 
 img = cv2.imread("../media/cat.jpg", 1)
 
+# BORDER_REPLICATE：复制法，也就是复制最边缘像素。如：aaaaaa|abcdefgh|hhhhhhh
+# BORDER_REFLECT：反射法，对感兴趣的图像中的像素在两边进行复制例如：fedcba|abcdefgh|hgfedcb
+# BORDER_REFLECT_101：反射法，也就是以最边缘像素为轴，对称，gfedcb|abcdefgh|gfedcba
+# BORDER_WRAP：外包装法cdefgh|abcdefgh|abcdefg
+# BORDER_CONSTANT：常量法，常数值填充。
+
 # 填充值
 top_size, bottom_size, left_size, right_size = (50, 50, 50, 50)
 
@@ -29,12 +35,6 @@ constant = cv2.copyMakeBorder(img, top_size, bottom_size, left_size, right_size,
 # cv2.imshow("wrap", wrap)
 # cv2.imshow("constant", constant)
 # cv2.destroyAllWindows()
-
-# BORDER_REPLICATE：复制法，也就是复制最边缘像素。
-# BORDER_REFLECT：反射法，对感兴趣的图像中的像素在两边进行复制例如：fedcba|abcdefgh|hgfedcb
-# BORDER_REFLECT_101：反射法，也就是以最边缘像素为轴，对称，gfedcb|abcdefgh|gfedcba
-# BORDER_WRAP：外包装法cdefgh|abcdefgh|abcdefg
-# BORDER_CONSTANT：常量法，常数值填充。
 
 plt.subplot(231), plt.imshow(img, 'gray'), plt.title('ORIGINAL')
 plt.subplot(232), plt.imshow(replicate, 'gray'), plt.title('REPLICATE')
